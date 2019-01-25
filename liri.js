@@ -35,31 +35,33 @@ function movie() {
         }
     }
     var url = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-    console.log(url);
 
-    axios.get(url).then(
-        function (response) {
-            //title of the movie
-            console.log("Title: " + response.data.Title);
-            //year the movie came out
-            console.log("Year: " + response.data.Year);
-            //IMDB rating of the movie
-            console.log("IMDB Rating: " + response.data.imdbRating);
-            //rotten tomatoes rating of the movie
-            console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
-            //country where the movie was produced
-            console.log("Country: " + response.data.Country);
-            //language of the movie
-            console.log("Language: " + response.data.Language);
-            //plot of the movie
-            console.log("Plot: " + response.data.Plot);
-            //actors in the movie
-            console.log("Actors: " + response.data.Actors);
-        }
-    )
 
     if (movieName === "") {
-        axios.get("http://www.omdbapi.com/?t=i+want+it+that+way&y=&plot=short&apikey=trilogy").then(
+        axios.get("http://www.omdbapi.com/?t=Mr+Nobody&y=&plot=short&apikey=trilogy").then(
+            function (response) {
+                //title of the movie
+                console.log("Title: " + response.data.Title);
+                //year the movie came out
+                console.log("Year: " + response.data.Year);
+                //IMDB rating of the movie
+                console.log("IMDB Rating: " + response.data.imdbRating);
+                //rotten tomatoes rating of the movie
+                console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+                //country where the movie was produced
+                console.log("Country: " + response.data.Country);
+                //language of the movie
+                console.log("Language: " + response.data.Language);
+                //plot of the movie
+                console.log("Plot: " + response.data.Plot);
+                //actors in the movie
+                console.log("Actors: " + response.data.Actors);
+            }
+        )
+    }
+
+    else {
+        axios.get(url).then(
             function (response) {
                 //title of the movie
                 console.log("Title: " + response.data.Title);
@@ -106,7 +108,7 @@ function artist() {
             console.log(location);
             //date of the event
             var date = response.data[0].datetime;
-            var datetime = "The concert is on " + moment(date).format('L')
+            var datetime = "The concert is on " + moment(date).format('L');
             console.log(datetime);
         }
     )
@@ -125,20 +127,15 @@ function song() {
     }
 
     var Spotify = require('node-spotify-api');
-    var spotify = new Spotify({
-        id: "453c02b0978b4ffca20d0eab9cefdea4",
-        secret: "7e800ea9268943e98001a0c891f6e2b0"
-    });
+    var keys = require("./keys.js");
+    var spotify = new Spotify(keys.spotify);
 
-    spotify.search({ type: 'track', query: SongName, limit: 1 }, function (err, data) {
+    spotify.search({ type: 'track', query: SongName || 'Ace-of-Base', limit: 1 }, function (err, data) {
         if (err) {
-            SongName = "";
-            console.log("Artist: " + songData.artists[0].name);
-            console.log("Song Title: " + songData.name);
-            console.log("Preview Track: " + songData.preview_url);
-            console.log("Album: " + songData.album.name);
-            song();
+            console.log("Uh-oh there was an error!");
         }
+
+        SongName = "";
 
         for (var i = 0; i < data.tracks.items.length; i++) {
             var songData = data.tracks.items[i];
@@ -157,9 +154,30 @@ function says() {
         if (error) {
             return console.log(error);
         }
-        console.log(data);
 
-        var dataArr = data.split(",");
-        song(dataArr);
-    })
-}
+        else {
+            var dataarr = data.split(",");
+            action = dataarr[0].trim();
+            value = dataarr[1].trim();
+
+            var Spotify = require('node-spotify-api');
+            var keys = require("./keys.js");
+            var spotify = new Spotify(keys.spotify);
+
+            spotify.search({ type: 'track', query: value, limit: 1 }, function (err, data) {
+                if (err) {
+                    console.log("Uh-oh Error!");
+                }
+
+                value = "";
+                for (var i = 0; i < data.tracks.items.length; i++) {
+                    var songData = data.tracks.items[i];
+                    console.log("Artist: " + songData.artists[0].name);
+                    console.log("Song Title: " + songData.name);
+                    console.log("Preview Track: " + songData.preview_url);
+                    console.log("Album: " + songData.album.name);
+                }
+            });
+        }
+    });
+} 
