@@ -32,6 +32,9 @@ concert-this leverages the bandsintown API to pull data in about the next concer
 - Date of the concert
 - Date/Time of the concert
 
+If nothing is entered in when calling  "concer-this" the song "The Sign" is requested by default with all the above information.
+
+
 For Date/Time I leverage moment.js to properly format the date in an aethetically pleasing format.
 
 
@@ -41,7 +44,7 @@ spotify-this-song leverages the spotify API.  Enter a song that you like and the
 - Link to Preview Track
 - Album Name
 
-If nothing is entered in when calling  "spotify-this-song" the song "The Sign" is requested by default with all the above information.
+If nothing is entered in when calling  "spotify-this-song" the song "I Want it that Way" is requested by default with all the above information.
 
 
 do-what-it-says also leverages the spotify API but when entered the data in the "random.txt" file is read and than called via the spotify API.
