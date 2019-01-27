@@ -257,10 +257,8 @@ function artist() {
             });
         }
     )
-
-
-
 }
+
 
 function song() {
     var nodeArgs = process.argv;
@@ -389,4 +387,3 @@ function says() {
         }
     });
 }
-

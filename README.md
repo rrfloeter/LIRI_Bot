@@ -49,5 +49,3 @@ do-what-it-says also leverages the spotify API but when entered the data in the 
 
 
 Lastely all data that is requested is appended to the "log.txt" as evidence my abilities with the appendfile function.
-
-
