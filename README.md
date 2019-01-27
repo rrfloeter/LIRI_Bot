@@ -46,6 +46,7 @@ If nothing is entered into the field when calling "movie-this" you will get the 
 
 ### For Date/Time I leverage moment.js to properly format the date in an aethetically pleasing format.
 
+![](screenshots/moment.PNG)
 
 ## spotify-this-song leverages the spotify API.  Enter a song that you like and the below data will appear:
 - Artist Name
