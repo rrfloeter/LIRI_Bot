@@ -36,26 +36,84 @@ function movie() {
     }
     var url = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
-
     if (movieName === "") {
         axios.get("http://www.omdbapi.com/?t=Mr+Nobody&y=&plot=short&apikey=trilogy").then(
             function (response) {
+                let MovieTitle = ("Title: " + response.data.Title);
+                let Year = ("Year: " + response.data.Year);
+                let IMDB = ("IMDB Rating: " + response.data.imdbRating);
+                let RT = ("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+                let Country = ("Country: " + response.data.Country);
+                let Language = ("Language: " + response.data.Language);
+                let Plot = ("Plot: " + response.data.Plot);
+                let Actors = ("Actors: " + response.data.Actors);
                 //title of the movie
-                console.log("Title: " + response.data.Title);
+                console.log(MovieTitle);
                 //year the movie came out
-                console.log("Year: " + response.data.Year);
+                console.log(Year);
                 //IMDB rating of the movie
-                console.log("IMDB Rating: " + response.data.imdbRating);
+                console.log(IMDB);
                 //rotten tomatoes rating of the movie
-                console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+                console.log(RT);
                 //country where the movie was produced
-                console.log("Country: " + response.data.Country);
+                console.log(Country);
                 //language of the movie
-                console.log("Language: " + response.data.Language);
+                console.log(Language);
                 //plot of the movie
-                console.log("Plot: " + response.data.Plot);
+                console.log(Plot);
                 //actors in the movie
-                console.log("Actors: " + response.data.Actors);
+                console.log(Actors);
+
+                var fs = require("fs");
+
+                fs.appendFile("log.txt", MovieTitle, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log("entry logged");
+                });
+
+                fs.appendFile("log.txt", Year, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", IMDB, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", RT, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Country, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Language, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Plot, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Actors, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
             }
         )
     }
@@ -63,22 +121,81 @@ function movie() {
     else {
         axios.get(url).then(
             function (response) {
+                let MovieTitle = ("Title: " + response.data.Title);
+                let Year = ("Year: " + response.data.Year);
+                let IMDB = ("IMDB Rating: " + response.data.imdbRating);
+                let RT = ("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+                let Country = ("Country: " + response.data.Country);
+                let Language = ("Language: " + response.data.Language);
+                let Plot = ("Plot: " + response.data.Plot);
+                let Actors = ("Actors: " + response.data.Actors);
                 //title of the movie
-                console.log("Title: " + response.data.Title);
+                console.log(MovieTitle);
                 //year the movie came out
-                console.log("Year: " + response.data.Year);
+                console.log(Year);
                 //IMDB rating of the movie
-                console.log("IMDB Rating: " + response.data.imdbRating);
+                console.log(IMDB);
                 //rotten tomatoes rating of the movie
-                console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+                console.log(RT);
                 //country where the movie was produced
-                console.log("Country: " + response.data.Country);
+                console.log(Country);
                 //language of the movie
-                console.log("Language: " + response.data.Language);
+                console.log(Language);
                 //plot of the movie
-                console.log("Plot: " + response.data.Plot);
+                console.log(Plot);
                 //actors in the movie
-                console.log("Actors: " + response.data.Actors);
+                console.log(Actors);
+
+                var fs = require("fs");
+
+                fs.appendFile("log.txt", MovieTitle, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log("entry logged");
+                });
+
+                fs.appendFile("log.txt", Year, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", IMDB, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", RT, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Country, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Language, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Plot, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
+
+                fs.appendFile("log.txt", Actors, function (err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                });
             }
         )
     }
@@ -110,8 +227,39 @@ function artist() {
             var date = response.data[0].datetime;
             var datetime = "The concert is on " + moment(date).format('L');
             console.log(datetime);
+
+            //log to log.txt
+            var fs = require("fs");
+
+            fs.appendFile("log.txt", place, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+                console.log("entry logged");
+            });
+
+            fs.appendFile("log.txt", location, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+
+            fs.appendFile("log.txt", date, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+
+            fs.appendFile("log.txt", datetime, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
         }
     )
+
+
+
 }
 
 function song() {
@@ -139,10 +287,41 @@ function song() {
 
         for (var i = 0; i < data.tracks.items.length; i++) {
             var songData = data.tracks.items[i];
-            console.log("Artist: " + songData.artists[0].name);
-            console.log("Song Title: " + songData.name);
-            console.log("Preview Track: " + songData.preview_url);
-            console.log("Album: " + songData.album.name);
+            let Artist = ("Artist: " + songData.artists[0].name);
+            let Song = ("Song Title: " + songData.name);
+            let Track = ("Preview Track: " + songData.preview_url);
+            let Album = ("Album: " + songData.album.name);
+            console.log(Artist);
+            console.log(Song);
+            console.log(Track);
+            console.log(Album);
+
+            var fs = require("fs");
+
+            fs.appendFile("log.txt", Artist, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+                console.log("entry logged");
+            });
+
+            fs.appendFile("log.txt", Song, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+
+            fs.appendFile("log.txt", Track, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+
+            fs.appendFile("log.txt", Album, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            });
         }
     });
 }
@@ -172,12 +351,42 @@ function says() {
                 value = "";
                 for (var i = 0; i < data.tracks.items.length; i++) {
                     var songData = data.tracks.items[i];
-                    console.log("Artist: " + songData.artists[0].name);
-                    console.log("Song Title: " + songData.name);
-                    console.log("Preview Track: " + songData.preview_url);
-                    console.log("Album: " + songData.album.name);
+                    let Artist = ("Artist: " + songData.artists[0].name);
+                    let Song = ("Song Title: " + songData.name);
+                    let Track = ("Preview Track: " + songData.preview_url);
+                    let Album = ("Album: " + songData.album.name);
+                    console.log(Artist);
+                    console.log(Song);
+                    console.log(Track);
+                    console.log(Album);
+
+                    fs.appendFile("log.txt", Artist, function (err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        console.log("entry logged");
+                    });
+
+                    fs.appendFile("log.txt", Song, function (err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                    });
+
+                    fs.appendFile("log.txt", Track, function (err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                    });
+
+                    fs.appendFile("log.txt", Album, function (err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                    });
                 }
             });
         }
     });
-} 
+}
+
